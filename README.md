@@ -4,6 +4,8 @@ Interacting with you MetaMask made "easy". (Depending on how you define "easy" o
 
 This plugin is based on the solutions brought by [Jakub Mucha - drptbl](https://github.com/drptbl) in [Synpress](https://github.com/Synthetixio/synpress), but with a more stripped down and (this is opinionated) simpler approach. The goal is to build a fairly straight forward solution that you can integrate into your own testing (end-to-end) flow.
 
+Forked from - [cypress-metamask](https://github.com/CraftAcademyLabs/cypress-metamask)
+
 ### Setup
 
 **Note:** This plugin is in development mode. You might encounter bugs and you will have to tweak your implementation a bit before you get it to work. But it is worth your effort in my opinon. Being able to run automated tests of your application is a good thing. ;-)

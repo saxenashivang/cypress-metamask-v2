@@ -29,19 +29,26 @@
   },
   "dependencies": {
     "cross-zip": "^4.0.0",
-    "cypress": "^7.3.0",
-    "dotenv": "^9.0.2",
+    "cypress": "^9.5.3",
+    "dotenv": "^16.0.0",
     "eslint-plugin-cypress": "^2.11.3",
     "ethers": "^5.1.4",
-    "node-fetch": "^2.6.1",
-    "puppeteer-core": "^9.1.1",
+    "node-fetch": "^3.2.3",
+    "puppeteer-core": "^13.5.2",
     "standard": "^16.0.3",
     "start-server-and-test": "^1.12.2",
     "superstatic": "^7.1.0",
-    "semantic-release": "^17.4.3"
+    "semantic-release": "^19.0.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/saxenashivang/cypress-metamask-v2.git"
-  }
+    "url": "git+https://github.com/saxenashivang/cypress-metamask-v2.git"
+  },
+  "description": "Interacting with you MetaMask made \"easy\". (Depending on how you define \"easy\" of course...)",
+  "bugs": {
+    "url": "https://github.com/saxenashivang/cypress-metamask-v2/issues"
+  },
+  "homepage": "https://github.com/saxenashivang/cypress-metamask-v2#readme",
+  "devDependencies": {},
+  "author": "shivang"
 }
