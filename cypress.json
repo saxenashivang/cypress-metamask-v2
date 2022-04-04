@@ -1,4 +1,9 @@
 {
   "baseUrl": "http://localhost:3474",
-  "chromeWebSecurity": true
+  "chromeWebSecurity": true,
+  "taskTimeout": 60000,
+  "env": {
+    "SKIP_METAMASK_SETUP": true,
+    "PRIVATE_KEY_WITH_FUNDS": "0x"
+  }
 }

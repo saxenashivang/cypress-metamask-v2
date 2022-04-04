@@ -1,7 +1,7 @@
 {
   "name": "cypress-metamask-v2",
-  "version": "1.6.1-development",
-  "main": "support/commands.js",
+  "version": "1.6.3",
+  "main": "cypress/support/commands.js",
   "license": "MIT",
   "keywords": [
     "Cypress",
@@ -28,17 +28,22 @@
     "cy:run": "CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress run --headed --browser chrome"
   },
   "dependencies": {
+    "@synthetixio/js": "^2.41.0",
+    "@testing-library/cypress": "^8.0.2",
+    "axios": "^0.26.1",
+    "bytes32": "0.0.3",
     "cross-zip": "^4.0.0",
     "cypress": "^9.5.3",
     "dotenv": "^16.0.0",
     "eslint-plugin-cypress": "^2.11.3",
     "ethers": "^5.1.4",
-    "node-fetch": "^3.2.3",
+    "node-fetch": "^2.6.1",
     "puppeteer-core": "^13.5.2",
+    "semantic-release": "^19.0.2",
     "standard": "^16.0.3",
     "start-server-and-test": "^1.12.2",
     "superstatic": "^7.1.0",
-    "semantic-release": "^19.0.2"
+    "synthetix-js": "^2.66.0"
   },
   "repository": {
     "type": "git",
@@ -49,6 +54,8 @@
     "url": "https://github.com/saxenashivang/cypress-metamask-v2/issues"
   },
   "homepage": "https://github.com/saxenashivang/cypress-metamask-v2#readme",
-  "devDependencies": {},
-  "author": "shivang"
+  "author": "shivang",
+  "devDependencies": {
+    "cypress-wait-until": "^1.7.2"
+  }
 }

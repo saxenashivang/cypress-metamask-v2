@@ -13,9 +13,9 @@ Forked from - [cypress-metamask](https://github.com/CraftAcademyLabs/cypress-met
 Install the package using `yarn` or `npm`:
 
 ```bash
-$ yarn add -D cypress-metamask
+$ yarn add -D cypress-metamask-v2
 // or 
-$ npm i -D cypress-metamask
+$ npm i -D cypress-metamask-v2
 ```
 
 Import the plugin in `cypress/support/index.js` 
@@ -23,14 +23,14 @@ Import the plugin in `cypress/support/index.js`
 ```js
 // Import commands.js using ES2015 syntax:
 import './commands'
-import 'cypress-metamask'
+import 'cypress-metamask-v2'
 ```
 
 Modify your `cypress/plugins/index.js` to include the plugin:
 
 ```js
 module.exports = (on, config) => {
-  require('cypress-metamask/plugins')(on)
+  require('cypress-metamask-v2/cypress/plugins')(on)
 }
 ```
 
