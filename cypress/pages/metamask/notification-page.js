@@ -13,9 +13,13 @@ module.exports.notificationPageElements = {
 
 const confirmSignatureRequestButton = `${notificationPage} .request-signature__footer__sign-button`;
 const rejectSignatureRequestButton = `${notificationPage} .request-signature__footer__cancel-button`;
+const confirmTypedV4SignatureRequestButton = `${notificationPage} .btn-primary`;
+const rejectTypedV4SignatureRequestButton = `${notificationPage} .btn-default`;
 module.exports.signaturePageElements = {
   confirmSignatureRequestButton,
   rejectSignatureRequestButton,
+  confirmTypedV4SignatureRequestButton,
+  rejectTypedV4SignatureRequestButton
 };
 
 const permissionsPage = '.permissions-connect';

@@ -397,10 +397,28 @@ module.exports = {
     await puppeteer.metamaskWindow().waitForTimeout(3000);
     return true;
   },
+  confirmTypedV4SignatureRequest: async () => {
+    const notificationPage = await puppeteer.switchToMetamaskNotification()
+    await puppeteer.waitAndClick(
+        signaturePageElements.confirmTypedV4SignatureRequestButton,
+        notificationPage,
+      );
+    await puppeteer.metamaskWindow().waitForTimeout(3000);
+    return true;
+  },
   rejectSignatureRequest: async () => {
     const notificationPage = await puppeteer.switchToMetamaskNotification();
     await puppeteer.waitAndClick(
       signaturePageElements.rejectSignatureRequestButton,
+      notificationPage,
+    );
+    await puppeteer.metamaskWindow().waitForTimeout(1000);
+    return true;
+  },
+  rejectTypedV4SignatureRequest: async () => {
+    const notificationPage = await puppeteer.switchToMetamaskNotification();
+    await puppeteer.waitAndClick(
+      signaturePageElements.rejectTypedV4SignatureRequestButton,
       notificationPage,
     );
     await puppeteer.metamaskWindow().waitForTimeout(1000);

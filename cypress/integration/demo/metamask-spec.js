@@ -192,6 +192,18 @@ describe('Metamask', () => {
         expect(approved).to.be.true;
       });
     });
+    it(`confirmMetamaskTypedSignatureRequest V4 should approve permission `, () => {
+      cy.get('#signTypedDataV4').click();
+      cy.confirmMetamaskTypedV4SignatureRequest().then(confirmed => {
+        expect(confirmed).to.be.true;
+      });
+    });
+    it(`confirmMetamaskTypedSignatureRequest V4 should approve permission `, () => {
+      cy.get('#signTypedDataV4').click();
+      cy.rejectMetamaskTypedV4SignatureRequest().then(rejected => {
+        expect(rejected).to.be.true;
+      });
+    });
     it(`rejectMetamaskToAddNetwork should reject permission to add network`, () => {
       cy.get('#addEthereumChain').click();
       cy.rejectMetamaskToAddNetwork().then(rejected => {

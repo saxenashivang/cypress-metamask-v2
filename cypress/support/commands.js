@@ -87,6 +87,14 @@ Cypress.Commands.add('rejectMetamaskSignatureRequest', () => {
   return cy.task('rejectMetamaskSignatureRequest');
 });
 
+Cypress.Commands.add('confirmMetamaskTypedV4SignatureRequest', () => {
+  return cy.task('confirmMetamaskTypedV4SignatureRequest');
+});
+
+Cypress.Commands.add('rejectMetamaskTypedV4SignatureRequest', () => {
+  return cy.task('rejectMetamaskTypedV4SignatureRequest');
+});
+
 Cypress.Commands.add('confirmMetamaskPermissionToSpend', () => {
   return cy.task('confirmMetamaskPermissionToSpend');
 });
