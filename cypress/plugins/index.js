@@ -269,8 +269,8 @@ module.exports = (on, config) => {
   }
 
   if (process.env.CI) {
-    config.retries.runMode = 1;
-    config.retries.openMode = 1;
+    // config.retries.runMode = 1;
+    // config.retries.openMode = 1;
   }
 
   if (process.env.SKIP_METAMASK_SETUP) {

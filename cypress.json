@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://shopdefi.ml",
+  "baseUrl": "http://localhost:3474",
   "chromeWebSecurity": true,
   "taskTimeout": 60000,
   "retries": { "runMode": 0, "openMode": 0 },
