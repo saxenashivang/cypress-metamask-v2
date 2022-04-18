@@ -1,6 +1,6 @@
 {
   "name": "cypress-metamask-v2",
-  "version": "1.6.5",
+  "version": "1.6.7",
   "main": "cypress/support/commands.js",
   "license": "MIT",
   "keywords": [
@@ -43,7 +43,8 @@
     "standard": "^16.0.3",
     "start-server-and-test": "^1.12.2",
     "superstatic": "^7.1.0",
-    "synthetix-js": "^2.66.0"
+    "synthetix-js": "^2.66.0",
+    "cypress-wait-until": "^1.7.2"
   },
   "repository": {
     "type": "git",
@@ -54,8 +55,5 @@
     "url": "https://github.com/saxenashivang/cypress-metamask-v2/issues"
   },
   "homepage": "https://github.com/saxenashivang/cypress-metamask-v2#readme",
-  "author": "shivang",
-  "devDependencies": {
-    "cypress-wait-until": "^1.7.2"
-  }
+  "author": "shivang"
 }

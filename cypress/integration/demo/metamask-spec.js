@@ -40,6 +40,7 @@ describe('Metamask', () => {
       }).then(networkAdded => {
         expect(networkAdded).to.be.true;
       });
+      cy.fetchMetamaskWalletAddress()
       cy.get('#network').contains('137');
       cy.get('#chainId').contains('0x89');
     });
