@@ -147,13 +147,21 @@ module.exports = (on, config) => {
       const rejected = await metamask.rejectSignatureRequest();
       return rejected;
     },
-    confirmMetamaskTypedV4SignatureRequest: async () => {
-      const confirmed = await metamask.confirmTypedV4SignatureRequest();
+    confirmMetamaskEncryptionPublicKeyRequest: async () => {
+      const confirmed = await metamask.confirmEncryptionPublicKeyRequest();
       return confirmed;
     },
-    rejectMetamaskTypedV4SignatureRequest: async () => {
-      const confirmed = await metamask.rejectTypedV4SignatureRequest();
+    rejectMetamaskEncryptionPublicKeyRequest: async () => {
+      const rejected = await metamask.rejectEncryptionPublicKeyRequest();
+      return rejected;
+    },
+    confirmMetamaskDecryptionRequest: async () => {
+      const confirmed = await metamask.confirmDecryptionRequest();
       return confirmed;
+    },
+    rejectMetamaskDecryptionRequest: async () => {
+      const rejected = await metamask.rejectDecryptionRequest();
+      return rejected;
     },
     confirmMetamaskPermissionToSpend: async () => {
       const confirmed = await metamask.confirmPermissionToSpend();
@@ -270,7 +278,7 @@ module.exports = (on, config) => {
   }
 
   // next component testing
-  // if (config.TestingType === 'component') {
+  // if (config.testingType === 'component') {
   //   require('@cypress/react/plugins/next')(on, config);
   // }
 

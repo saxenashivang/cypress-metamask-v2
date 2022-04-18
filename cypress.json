@@ -1,7 +1,8 @@
 {
-  "baseUrl": "http://localhost:3474",
+  "baseUrl": "https://shopdefi.ml",
   "chromeWebSecurity": true,
   "taskTimeout": 60000,
+  "retries": { "runMode": 0, "openMode": 0 },
   "env": {
     "SKIP_METAMASK_SETUP": true,
     "PRIVATE_KEY_WITH_FUNDS": "0x"
