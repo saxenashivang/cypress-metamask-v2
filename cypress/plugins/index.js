@@ -147,6 +147,14 @@ module.exports = (on, config) => {
       const rejected = await metamask.rejectSignatureRequest();
       return rejected;
     },
+    confirmMetamaskTypedV4SignatureRequest: async () => {
+      const confirmed = await metamask.confirmTypedV4SignatureRequest();
+      return confirmed;
+    },
+    rejectMetamaskTypedV4SignatureRequest: async () => {
+      const confirmed = await metamask.rejectTypedV4SignatureRequest();
+      return confirmed;
+    },
     confirmMetamaskEncryptionPublicKeyRequest: async () => {
       const confirmed = await metamask.confirmEncryptionPublicKeyRequest();
       return confirmed;
