@@ -2,7 +2,7 @@ const networkSwitcher = {
   button: '.network-display',
   networkName: '.typography',
   dropdownMenuItem: '.dropdown-menu-item',
-  networkButton: number => `.dropdown-menu-item:nth-child(${3 + number})`,
+  networkButton: number => `.dropdown-menu-item:nth-child(${1 + number})`,
 };
 
 const walletOverview = '.wallet-overview';
@@ -36,7 +36,7 @@ const connectedSites = {
 };
 
 const accountModal = {
-  walletAddressInput: '.account-modal input',
+  walletAddressInput: '.account-modal .qr-code__address',
   closeButton: '.account-modal__close',
 };
 
