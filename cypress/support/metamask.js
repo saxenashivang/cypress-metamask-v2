@@ -75,12 +75,18 @@ module.exports = {
     return true;
   },
   importWallet: async (secretWords, password) => {
+    const words = secretWords.split(' ');
     await puppeteer.waitAndClick(firstTimeFlowPageElements.importWalletButton);
     await puppeteer.waitAndClick(metametricsPageElements.optOutAnalyticsButton);
-    await puppeteer.waitAndType(
-      firstTimeFlowFormPageElements.secretWordsInput,
-      secretWords,
-    );
+
+    for (const [index, word] of words.entries()) {
+      const selector = firstTimeFlowFormPageElements.secretWordsInput.replace('%',index);
+      await puppeteer.waitAndType(
+        selector,
+        word,
+      );
+    }
+
     await puppeteer.waitAndType(
       firstTimeFlowFormPageElements.passwordInput,
       password,
