@@ -94,6 +94,10 @@ module.exports = (on, config) => {
       const notificationPage = await puppeteer.switchToMetamaskNotification();
       return notificationPage;
     },
+    lockMetamask: async () => {
+      const locked = await metamask.lock();
+      return locked;
+    },
     unlockMetamask: async password => {
       const unlocked = await metamask.unlock(password);
       return unlocked;
