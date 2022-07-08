@@ -628,6 +628,12 @@ module.exports = {
       (await puppeteer.metamaskWindow().$(unlockPageElements.unlockPage)) ===
       null
     ) {
+
+      if( (await puppeteer.metamaskWindow().$(mainPageElements.walletOverview)) !== null)  {
+        await puppeteer.switchToCypressWindow();
+        return true;
+      }
+
       await module.exports.confirmWelcomePage();
       if (secretWordsOrPrivateKey.includes(' ')) {
         // secret words
