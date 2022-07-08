@@ -66,6 +66,12 @@ module.exports = {
     }
     return true;
   },
+  lock: async () => {
+    await module.exports.fixBlankPage();
+    await puppeteer.waitAndClick(mainPageElements.accountMenu.button);
+    await puppeteer.waitAndClick(mainPageElements.accountMenu.lockButton);
+    return true;
+  },
   unlock: async password => {
     await module.exports.fixBlankPage();
     await puppeteer.waitAndType(unlockPageElements.passwordInput, password);
@@ -628,6 +634,12 @@ module.exports = {
       (await puppeteer.metamaskWindow().$(unlockPageElements.unlockPage)) ===
       null
     ) {
+
+      if( (await puppeteer.metamaskWindow().$(mainPageElements.walletOverview)) !== null)  {
+        await puppeteer.switchToCypressWindow();
+        return true;
+      }
+
       await module.exports.confirmWelcomePage();
       if (secretWordsOrPrivateKey.includes(' ')) {
         // secret words
