@@ -475,6 +475,13 @@ module.exports = {
     await puppeteer.metamaskWindow().waitForTimeout(3000);
     return true;
   },
+  simpleTxnConfirm: async () => {
+    await puppeteer.metamaskWindow().waitForTimeout(1000);
+    const notificationPage = await puppeteer.switchToMetamaskNotification();
+    await puppeteer.waitAndClick(confirmPageElements.confirmButton, notificationPage);
+    await puppeteer.metamaskWindow().waitForTimeout(3000);
+    return true;
+  },
   confirmTransaction: async gasConfig => {
     const isKovanTestnet = getNetwork().networkName === 'kovan';
     // todo: remove waitForTimeout below after improving switchToMetamaskNotification

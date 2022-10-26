@@ -187,6 +187,10 @@ module.exports = (on, config) => {
       const accepted = await metamask.acceptAccess(allAccounts);
       return accepted;
     },
+    simpleTxnConfirm: async () => {
+      const confirmed = await metamask.simpleTxnConfirm();
+      return confirmed;
+    },
     confirmMetamaskTransaction: async gasConfig => {
       const confirmed = await metamask.confirmTransaction(gasConfig);
       return confirmed;

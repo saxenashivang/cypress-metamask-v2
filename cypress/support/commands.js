@@ -107,6 +107,10 @@ Cypress.Commands.add('acceptMetamaskAccess', allAccounts => {
   return cy.task('acceptMetamaskAccess', allAccounts);
 });
 
+Cypress.Commands.add('simpleTxnConfirm', () => {
+  return cy.task('simpleTxnConfirm');
+});
+
 Cypress.Commands.add('confirmMetamaskTransaction', gasConfig => {
   return cy.task('confirmMetamaskTransaction', gasConfig);
 });
