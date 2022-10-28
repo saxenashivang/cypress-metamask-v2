@@ -1,5 +1,5 @@
 const helpers = require('../support/helpers');
-const puppeteer = require('../support/puppeteer');
+const playwright = require('../support/playwright');
 const metamask = require('../support/metamask');
 const synthetix = require('../support/synthetix');
 const etherscan = require('../support/etherscan');
@@ -53,50 +53,46 @@ module.exports = (on, config) => {
       console.warn('\u001B[33m', 'WARNING:', message, '\u001B[0m');
       return true;
     },
-    // puppeteer commands
-    initPuppeteer: async () => {
-      const connected = await puppeteer.init();
+    // playwright commands
+    initPlaywright: async () => {
+      const connected = await playwright.init();
       return connected;
     },
-    clearPuppeteer: async () => {
-      const cleared = await puppeteer.clear();
+    clearPlaywright: async () => {
+      const cleared = await playwright.clear();
       return cleared;
     },
     assignWindows: async () => {
-      const assigned = await puppeteer.assignWindows();
+      const assigned = await playwright.assignWindows();
       return assigned;
     },
     clearWindows: async () => {
-      const cleared = await puppeteer.clearWindows();
+      const cleared = await playwright.clearWindows();
       return cleared;
     },
     assignActiveTabName: async tabName => {
-      const assigned = await puppeteer.assignActiveTabName(tabName);
+      const assigned = await playwright.assignActiveTabName(tabName);
       return assigned;
     },
     isMetamaskWindowActive: async () => {
-      const isMetamaskActive = await puppeteer.isMetamaskWindowActive();
+      const isMetamaskActive = await playwright.isMetamaskWindowActive();
       return isMetamaskActive;
     },
     isCypressWindowActive: async () => {
-      const isCypressActive = await puppeteer.isCypressWindowActive();
+      const isCypressActive = await playwright.isCypressWindowActive();
       return isCypressActive;
     },
     switchToCypressWindow: async () => {
-      const switched = await puppeteer.switchToCypressWindow();
+      const switched = await playwright.switchToCypressWindow();
       return switched;
     },
     switchToMetamaskWindow: async () => {
-      const switched = await puppeteer.switchToMetamaskWindow();
+      const switched = await playwright.switchToMetamaskWindow();
       return switched;
     },
     switchToMetamaskNotification: async () => {
-      const notificationPage = await puppeteer.switchToMetamaskNotification();
+      const notificationPage = await playwright.switchToMetamaskNotification();
       return notificationPage;
-    },
-    lockMetamask: async () => {
-      const locked = await metamask.lock();
-      return locked;
     },
     unlockMetamask: async password => {
       const unlocked = await metamask.unlock(password);
@@ -147,17 +143,17 @@ module.exports = (on, config) => {
       const confirmed = await metamask.confirmSignatureRequest();
       return confirmed;
     },
+    confirmMetamaskDataSignatureRequest: async () => {
+      const confirmed = await metamask.confirmDataSignatureRequest();
+      return confirmed;
+    },
     rejectMetamaskSignatureRequest: async () => {
       const rejected = await metamask.rejectSignatureRequest();
       return rejected;
     },
-    confirmMetamaskTypedV4SignatureRequest: async () => {
-      const confirmed = await metamask.confirmTypedV4SignatureRequest();
-      return confirmed;
-    },
-    rejectMetamaskTypedV4SignatureRequest: async () => {
-      const confirmed = await metamask.rejectTypedV4SignatureRequest();
-      return confirmed;
+    rejectMetamaskDataSignatureRequest: async () => {
+      const rejected = await metamask.rejectDataSignatureRequest();
+      return rejected;
     },
     confirmMetamaskEncryptionPublicKeyRequest: async () => {
       const confirmed = await metamask.confirmEncryptionPublicKeyRequest();
@@ -195,8 +191,8 @@ module.exports = (on, config) => {
       const rejected = await metamask.rejectTransaction();
       return rejected;
     },
-    allowMetamaskToAddNetwork: async () => {
-      const allowed = await metamask.allowToAddNetwork();
+    allowMetamaskToAddNetwork: async ({ waitForEvent }) => {
+      const allowed = await metamask.allowToAddNetwork({ waitForEvent });
       return allowed;
     },
     rejectMetamaskToAddNetwork: async () => {
@@ -277,22 +273,18 @@ module.exports = (on, config) => {
   });
 
   if (process.env.BASE_URL) {
-    config.baseUrl = process.env.BASE_URL;
+    config.e2e.baseUrl = process.env.BASE_URL;
+    config.component.baseUrl = process.env.BASE_URL;
   }
 
   if (process.env.CI) {
-    // config.retries.runMode = 1;
-    // config.retries.openMode = 1;
+    config.retries.runMode = 1;
+    config.retries.openMode = 1;
   }
 
   if (process.env.SKIP_METAMASK_SETUP) {
     config.env.SKIP_METAMASK_SETUP = true;
   }
-
-  // next component testing
-  // if (config.testingType === 'component') {
-  //   require('@cypress/react/plugins/next')(on, config);
-  // }
 
   return config;
 };

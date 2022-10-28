@@ -1,13 +1,14 @@
+// trunk-ignore(eslint)
 declare namespace Cypress {
   interface Chainable<Subject> {
     /**
-     * Connect puppeteer with Cypress instance
+     * Connect playwright with Cypress instance
      * @example
-     * cy.initPuppeteer()
+     * cy.initPlaywright()
      */
-    initPuppeteer(): Chainable<Subject>;
+    initPlaywright(): Chainable<Subject>;
     /**
-     * Assign currently open tabs with puppeteer
+     * Assign currently open tabs with playwright
      * @example
      * cy.assignWindows()
      */
@@ -55,7 +56,7 @@ declare namespace Cypress {
      */
     getNetwork(): Chainable<Subject>;
     /**
-     * Add network in metamask
+     * Add network in metamask (and also switch to the newly added network)
      * @example
      * cy.addMetamaskNetwork({networkName: 'name', rpcUrl: 'https://url', chainId: '1', symbol: 'ETH', blockExplorer: 'https://url', isTestnet: true})
      */
@@ -80,7 +81,7 @@ declare namespace Cypress {
      * cy.createMetamaskAccount()
      * cy.createMetamaskAccount('accountName')
      */
-    createMetamaskAccount(accountName: string | undefined): Chainable<Subject>;
+    createMetamaskAccount(accountName?: string): Chainable<Subject>;
     /**
      * Switch metamask account
      * @example
@@ -88,7 +89,7 @@ declare namespace Cypress {
      * cy.switchMetamaskAccount('Account 2')
      */
     switchMetamaskAccount(
-      accountNameOrAccountNumber: string | number,
+        accountNameOrAccountNumber: string | number,
     ): Chainable<Subject>;
     /**
      * Get current wallet address of metamask wallet
@@ -127,11 +128,11 @@ declare namespace Cypress {
      */
     confirmMetamaskSignatureRequest(): Chainable<Subject>;
     /**
-     * Confirm metamask permission to sign message
+     * Confirm metamask permission to sign Data message
      * @example
-     * cy.confirmMetamaskTypedSignatureRequest()
+     * cy.confirmMetamaskDataSignatureRequest()
      */
-    confirmMetamaskTypedV4SignatureRequest(): Chainable<Subject>;
+    confirmMetamaskDataSignatureRequest(): Chainable<Subject>;
     /**
      * Reject metamask permission to sign message
      * @example
@@ -139,11 +140,35 @@ declare namespace Cypress {
      */
     rejectMetamaskSignatureRequest(): Chainable<Subject>;
     /**
-     * Reject metamask permission to sign message
+     * Confirm metamask request for public encryption key
      * @example
-     * cy.rejectMetamaskTypedV4SignatureRequest()
+     * cy.confirmMetamaskEncryptionPublicKeyRequest()
      */
-    rejectMetamaskTypedV4SignatureRequest(): Chainable<Subject>;
+    confirmMetamaskEncryptionPublicKeyRequest(): Chainable<Subject>;
+    /**
+     * Reject metamask request for public encryption key
+     * @example
+     * cy.rejectMetamaskEncryptionPublicKeyRequest()
+     */
+    rejectMetamaskEncryptionPublicKeyRequest(): Chainable<Subject>;
+    /**
+     * Confirm metamask request to decrypt message with private key
+     * @example
+     * cy.confirmMetamaskDecryptionRequest()
+     */
+    confirmMetamaskDecryptionRequest(): Chainable<Subject>;
+    /**
+     * Reject metamask request to decrypt message with private key
+     * @example
+     * cy.rejectMetamaskDecryptionRequest()
+     */
+    rejectMetamaskDecryptionRequest(): Chainable<Subject>;
+    /**
+     * Reject metamask permission to sign Data message
+     * @example
+     * cy.rejectMetamaskDataSignatureRequest()
+     */
+    rejectMetamaskDataSignatureRequest(): Chainable<Subject>;
     /**
      * Confirm metamask permission to spend asset
      * @example
@@ -162,14 +187,14 @@ declare namespace Cypress {
      * cy.acceptMetamaskAccess()
      * cy.acceptMetamaskAccess(true)
      */
-    acceptMetamaskAccess(allAccounts: boolean | undefined): Chainable<Subject>;
+    acceptMetamaskAccess(allAccounts?: boolean): Chainable<Subject>;
     /**
      * Confirm metamask atransaction
      * @example
      * cy.confirmMetamaskTransaction()
      * cy.confirmMetamaskTransaction({gasFee: 10, gasLimit: 1000000})
      */
-    confirmMetamaskTransaction(gasConfig : object | undefined): Chainable<Subject>;
+    confirmMetamaskTransaction(gasConfig?: object): Chainable<Subject>;
     /**
      * Reject metamask transaction
      * @example
@@ -180,8 +205,9 @@ declare namespace Cypress {
      * Allow site to add new network in metamask
      * @example
      * cy.allowMetamaskToAddNetwork()
+     * cy.allowMetamaskToAddNetwork('close') // (waitForEvent)
      */
-    allowMetamaskToAddNetwork(): Chainable<Subject>;
+    allowMetamaskToAddNetwork(waitForEvent?: string): Chainable<Subject>;
     /**
      * Reject site to add new network in metamask
      * @example
@@ -227,9 +253,9 @@ declare namespace Cypress {
      * cy.setupMetamask('private_key', {networkName: 'name', rpcUrl: 'https://url', chainId: 1, symbol: 'ETH', blockExplorer: 'https://url', isTestnet: true}, 'password for metamask')
      */
     setupMetamask(
-      secretWordsOrPrivateKey: string,
-      network: string | object,
-      password: string,
+        secretWordsOrPrivateKey: string,
+        network: string | object,
+        password: string,
     ): Chainable<Subject>;
     /**
      * Execute settle on Exchanger contract
@@ -237,9 +263,9 @@ declare namespace Cypress {
      * cy.snxExchangerSettle('sETH', '0x...', '123123123123123123...')
      */
     snxExchangerSettle(
-      asset: string,
-      walletAddress: string,
-      privateKey: string,
+        asset: string,
+        walletAddress: string,
+        privateKey: string,
     ): Chainable<Subject>;
     /**
      * Check waiting period on Exchanger contract
@@ -247,8 +273,8 @@ declare namespace Cypress {
      * cy.snxCheckWaitingPeriod('sETH', '0x...')
      */
     snxCheckWaitingPeriod(
-      asset: string,
-      walletAddress: string,
+        asset: string,
+        walletAddress: string,
     ): Chainable<Subject>;
     /**
      * Get transaction status from Etherscan API
@@ -270,7 +296,7 @@ declare namespace Cypress {
      * cy.waitForResources([{name:"fonts.gstatic.com/s/worksans",number:2}])
      */
     waitForResources(
-      resources: Array<{ name: string; number?: number }> | undefined,
+        resources?: Array<{ name: string; number?: number }>,
     ): Chainable<Subject>;
     /**
      * Assert that element top is within viewport
@@ -286,8 +312,8 @@ declare namespace Cypress {
      * cy.get('selector').isWithinViewport(800, 600)
      */
     isWithinViewport(
-      viewportWidth: number,
-      viewportHeight: number,
+        viewportWidth: number,
+        viewportHeight: number,
     ): Chainable<Subject>;
   }
 }

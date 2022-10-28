@@ -13,13 +13,16 @@ module.exports.notificationPageElements = {
 
 const confirmSignatureRequestButton = `${notificationPage} .request-signature__footer__sign-button`;
 const rejectSignatureRequestButton = `${notificationPage} .request-signature__footer__cancel-button`;
-const confirmTypedV4SignatureRequestButton = `${notificationPage} .btn-primary`;
-const rejectTypedV4SignatureRequestButton = `${notificationPage} .btn-default`;
 module.exports.signaturePageElements = {
   confirmSignatureRequestButton,
   rejectSignatureRequestButton,
-  confirmTypedV4SignatureRequestButton,
-  rejectTypedV4SignatureRequestButton
+};
+
+const confirmDataSignatureRequestButton = `.btn-primary`;
+const rejectDataSignatureRequestButton = `.btn-default`;
+module.exports.dataSignaturePageElements = {
+  confirmDataSignatureRequestButton,
+  rejectDataSignatureRequestButton,
 };
 
 const permissionsPage = '.permissions-connect';
@@ -57,4 +60,18 @@ module.exports.confirmPageElements = {
   totalLabel,
   rejectButton,
   confirmButton,
+};
+
+const confirmEncryptionPublicKeyButton = `${notificationPage} .request-encryption-public-key__footer__sign-button`;
+const rejectEncryptionPublicKeyButton = `${notificationPage} .request-encryption-public-key__footer__cancel-button`;
+module.exports.encryptionPublicKeyPageElements = {
+  confirmEncryptionPublicKeyButton,
+  rejectEncryptionPublicKeyButton,
+};
+
+const confirmDecryptionRequestButton = `${notificationPage} .request-decrypt-message__footer__sign-button`;
+const rejectDecryptionRequestButton = `${notificationPage} .request-decrypt-message__footer__cancel-button`;
+module.exports.decryptPageElements = {
+  confirmDecryptionRequestButton,
+  rejectDecryptionRequestButton,
 };

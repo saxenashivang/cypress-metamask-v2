@@ -2,13 +2,14 @@ const networkSwitcher = {
   button: '.network-display',
   networkName: '.typography',
   dropdownMenuItem: '.dropdown-menu-item',
-  networkButton: number => `.dropdown-menu-item:nth-child(${1 + number})`,
+  networkButton: number => `.dropdown-menu-item:nth-child(${3 + number})`,
 };
 
 const walletOverview = '.wallet-overview';
 const popup = {
   container: '.popover-container',
   closeButton: '.popover-header__button',
+  background: '.popover-bg',
 };
 
 const accountMenu = {
@@ -18,7 +19,6 @@ const accountMenu = {
   createAccountButton: '.account-menu__item--clickable:nth-child(6)',
   importAccountButton: '.account-menu__item--clickable:nth-child(7)',
   settingsButton: '.account-menu__item--clickable:nth-child(11)',
-  lockButton: '.account-menu__lock-button',
 };
 
 const optionsMenu = {
@@ -30,14 +30,14 @@ const optionsMenu = {
 const connectedSitesSelector = '.connected-sites';
 const connectedSites = {
   modal: connectedSitesSelector,
-  trashButton: `${connectedSitesSelector} .connected-sites-list__content-row-link-button`,
+  trashButton: `${connectedSitesSelector} .connected-sites-list__trash`,
   cancelButton: `${connectedSitesSelector} .btn-secondary`,
   disconnectButton: `${connectedSitesSelector} .btn-primary`,
   closeButton: `${connectedSitesSelector} [data-testid="popover-close"]`,
 };
 
 const accountModal = {
-  walletAddressInput: '.account-modal .qr-code__address',
+  walletAddressInput: '.account-modal input',
   closeButton: '.account-modal__close',
 };
 

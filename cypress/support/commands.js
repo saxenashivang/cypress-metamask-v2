@@ -1,10 +1,10 @@
 import '@testing-library/cypress/add-commands';
 import 'cypress-wait-until';
 
-// puppeteer commands
+// playwright commands
 
-Cypress.Commands.add('initPuppeteer', () => {
-  return cy.task('initPuppeteer');
+Cypress.Commands.add('initPlaywright', () => {
+  return cy.task('initPlaywright');
 });
 
 Cypress.Commands.add('assignWindows', () => {
@@ -83,16 +83,32 @@ Cypress.Commands.add('confirmMetamaskSignatureRequest', () => {
   return cy.task('confirmMetamaskSignatureRequest');
 });
 
+Cypress.Commands.add('confirmMetamaskEncryptionPublicKeyRequest', () => {
+  return cy.task('confirmMetamaskEncryptionPublicKeyRequest');
+});
+
+Cypress.Commands.add('rejectMetamaskEncryptionPublicKeyRequest', () => {
+  return cy.task('rejectMetamaskEncryptionPublicKeyRequest');
+});
+
+Cypress.Commands.add('confirmMetamaskDecryptionRequest', () => {
+  return cy.task('confirmMetamaskDecryptionRequest');
+});
+
+Cypress.Commands.add('rejectMetamaskDecryptionRequest', () => {
+  return cy.task('rejectMetamaskDecryptionRequest');
+});
+
 Cypress.Commands.add('rejectMetamaskSignatureRequest', () => {
   return cy.task('rejectMetamaskSignatureRequest');
 });
 
-Cypress.Commands.add('confirmMetamaskTypedV4SignatureRequest', () => {
-  return cy.task('confirmMetamaskTypedV4SignatureRequest');
+Cypress.Commands.add('rejectMetamaskDataSignatureRequest', () => {
+  return cy.task('rejectMetamaskDataSignatureRequest');
 });
 
-Cypress.Commands.add('rejectMetamaskTypedV4SignatureRequest', () => {
-  return cy.task('rejectMetamaskTypedV4SignatureRequest');
+Cypress.Commands.add('confirmMetamaskDataSignatureRequest', () => {
+  return cy.task('confirmMetamaskDataSignatureRequest');
 });
 
 Cypress.Commands.add('confirmMetamaskPermissionToSpend', () => {
@@ -115,8 +131,8 @@ Cypress.Commands.add('rejectMetamaskTransaction', () => {
   return cy.task('rejectMetamaskTransaction');
 });
 
-Cypress.Commands.add('allowMetamaskToAddNetwork', () => {
-  return cy.task('allowMetamaskToAddNetwork');
+Cypress.Commands.add('allowMetamaskToAddNetwork', waitForEvent => {
+  return cy.task('allowMetamaskToAddNetwork', { waitForEvent });
 });
 
 Cypress.Commands.add('rejectMetamaskToAddNetwork', () => {
@@ -133,10 +149,6 @@ Cypress.Commands.add('rejectMetamaskToSwitchNetwork', () => {
 
 Cypress.Commands.add('allowMetamaskToAddAndSwitchNetwork', () => {
   return cy.task('allowMetamaskToAddAndSwitchNetwork');
-});
-
-Cypress.Commands.add('lockMetamask', () => {
-  return cy.task('lockMetamask');
 });
 
 Cypress.Commands.add('unlockMetamask', (password = 'Tester@1234') => {
@@ -247,7 +259,7 @@ Cypress.Commands.add('waitForResources', (resources = []) => {
 });
 
 // overwrite default cypress commands
-if (!Cypress.env('SKIP_RESOURCES_WAIT')) {
+if (Cypress.env('RESOURCES_WAIT')) {
   Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
     originalFn(url, options);
     return cy.waitForResources();
